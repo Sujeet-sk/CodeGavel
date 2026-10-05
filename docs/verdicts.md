@@ -1,0 +1,20 @@
+# CodeGavel Verdicts
+
+- PENDING
+- RUNNING
+- ACCEPTED
+- WRONG_ANSWER
+- TIME_LIMIT_EXCEEDED
+- COMPILATION_ERROR
+
+Future:
+
+- RUNTIME_ERROR
+- SYSTEM_ERROR
+
+## Flow
+
+PENDING → RUNNING → ACCEPTED
+                 → WRONG_ANSWER
+                 → TIME_LIMIT_EXCEEDED
+                 → COMPILATION_ERROR
