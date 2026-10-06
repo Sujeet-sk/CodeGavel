@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-CodeGavel is a LeetCode-style online judge for Java submissions.
+CodeGavel is a modern coding practice platform with an automated online judge for Java submissions.
 
 The system accepts Java source code from an authenticated user, places the submission into a queue, executes it inside an isolated Docker container, evaluates the output against predefined test cases, and stores the resulting verdict.
 
