@@ -1,5 +1,6 @@
 package com.codegavel.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,16 +13,16 @@ public class TestCase {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "problem_id", nullable = false)
+    @JsonIgnore
     private Problem problem;
 
-    @Column(name = "input_data", nullable = false, columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String inputData;
 
-    @Column(name = "expected_output", nullable = false, columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String expectedOutput;
 
-    @Column(name = "time_limit_ms", nullable = false)
-    private Integer timeLimitMs = 2000;
+    private Long timeLimitMs = 2000L;
 
     public Long getId() {
         return id;
@@ -51,11 +52,11 @@ public class TestCase {
         this.expectedOutput = expectedOutput;
     }
 
-    public Integer getTimeLimitMs() {
+    public Long getTimeLimitMs() {
         return timeLimitMs;
     }
 
-    public void setTimeLimitMs(Integer timeLimitMs) {
+    public void setTimeLimitMs(Long timeLimitMs) {
         this.timeLimitMs = timeLimitMs;
     }
 }
