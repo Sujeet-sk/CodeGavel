@@ -199,4 +199,4 @@ CodeGavel is a proprietary project. This repository is public for portfolio and 
 ## Author
 
 **Sujeet Kumar**
-[GitHub](https://github.com/Sujeet-sk) · [LinkedIn](www.linkedin.com/in/sujeet-kumar-55659a289)
+[GitHub](https://github.com/Sujeet-sk) · [LinkedIn](https://www.linkedin.com/in/sujeet-kumar-55659a289)
