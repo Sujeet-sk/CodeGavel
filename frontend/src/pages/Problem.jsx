@@ -10,6 +10,10 @@ import {
   Send,
   Terminal,
   XCircle,
+  Lightbulb,
+  Cpu,
+  Database,
+  Tag,
 } from "lucide-react";
 import Editor from "@monaco-editor/react";
 import { getProblem, submitCode, getSubmission } from "../services/api";
@@ -152,13 +156,96 @@ function Problem() {
               <div className="cg-panel-kicker">
                 Problem statement
               </div>
-
               <h1>{problem.title}</h1>
             </div>
           </div>
 
           <div className="cg-problem-body">
             <p>{problem.description}</p>
+
+            {problem.topic && (
+              <div className="cg-problem-tags">
+                <span className="cg-problem-tag">
+                  <Tag size={13} />
+                  {problem.topic}
+                </span>
+
+                {problem.pattern && (
+                  <span className="cg-problem-tag">
+                    <Cpu size={13} />
+                    {problem.pattern}
+                  </span>
+                )}
+              </div>
+            )}
+
+            {problem.constraints && (
+              <div className="cg-detail-section">
+                <div className="cg-detail-heading">
+                  <span>Constraints</span>
+                </div>
+                <div className="cg-detail-content">
+                  {problem.constraints}
+                </div>
+              </div>
+            )}
+
+            {problem.inputFormat && (
+              <div className="cg-detail-section">
+                <div className="cg-detail-heading">
+                  <span>Input Format</span>
+                </div>
+                <div className="cg-detail-content">
+                  {problem.inputFormat}
+                </div>
+              </div>
+            )}
+
+            {problem.outputFormat && (
+              <div className="cg-detail-section">
+                <div className="cg-detail-heading">
+                  <span>Output Format</span>
+                </div>
+                <div className="cg-detail-content">
+                  {problem.outputFormat}
+                </div>
+              </div>
+            )}
+
+            {problem.examples?.length > 0 && (
+              <div className="cg-examples-section">
+                <div className="cg-examples-heading">
+                  Examples
+                </div>
+
+                {problem.examples.map((example, index) => (
+                  <div className="cg-example-card" key={example.id || index}>
+                    <div className="cg-example-card-title">
+                      Example {index + 1}
+                    </div>
+
+                    <div className="cg-example-grid">
+                      <div>
+                        <span className="cg-example-label">Input</span>
+                        <pre>{example.input}</pre>
+                      </div>
+
+                      <div>
+                        <span className="cg-example-label">Output</span>
+                        <pre>{example.output}</pre>
+                      </div>
+                    </div>
+
+                    {example.explanation && (
+                      <div className="cg-example-explanation">
+                        <strong>Explanation:</strong>{" "}
+                        {example.explanation}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
 
             <div className="cg-info-card">
               <div className="cg-info-icon">
@@ -167,7 +254,6 @@ function Problem() {
 
               <div>
                 <strong>Your mission</strong>
-
                 <span>
                   Write a Java program that produces the expected
                   output for every hidden test case.
@@ -194,7 +280,40 @@ function Problem() {
                 <span>Evaluation</span>
                 <strong>Hidden test cases</strong>
               </div>
+
+              {problem.timeLimitMs && (
+                <div className="cg-example-row">
+                  <span>
+                    <Clock3 size={14} />
+                    Time limit
+                  </span>
+                  <strong>{problem.timeLimitMs} ms</strong>
+                </div>
+              )}
+
+              {problem.memoryLimitMb && (
+                <div className="cg-example-row">
+                  <span>
+                    <Database size={14} />
+                    Memory limit
+                  </span>
+                  <strong>{problem.memoryLimitMb} MB</strong>
+                </div>
+              )}
             </div>
+
+            {problem.hints && (
+              <div className="cg-hint-card">
+                <div className="cg-hint-icon">
+                  <Lightbulb size={17} />
+                </div>
+
+                <div>
+                  <strong>Hint</strong>
+                  <span>{problem.hints}</span>
+                </div>
+              </div>
+            )}
 
             <div className="cg-shortcut">
               <span>Quick submit</span>
@@ -278,81 +397,28 @@ function Problem() {
                     <XCircle size={14} />
                   )}
 
-                  {(result === "PENDING" ||
-                    result === "RUNNING") && (
-                    <Clock3 size={14} />
-                  )}
-
                   {result}
                 </span>
               )}
             </div>
 
-            <div className="cg-verdict-content">
-              {!result && (
-                <>
-                  <div className="cg-verdict-empty-icon">
-                    <Terminal size={20} />
-                  </div>
+            {!result && (
+              <div className="cg-verdict-empty">
+                Submit your solution to receive a verdict.
+              </div>
+            )}
 
-                  <span>
-                    Submit your solution to receive a verdict.
-                  </span>
-                </>
-              )}
+            {result === "PENDING" && (
+              <div className="cg-verdict-empty">
+                Your submission is waiting in the judge queue...
+              </div>
+            )}
 
-              {result === "PENDING" && (
-                <span>
-                  Your submission is waiting in the judge queue...
-                </span>
-              )}
-
-              {result === "RUNNING" && (
-                <span>
-                  Your code is being executed in the sandbox...
-                </span>
-              )}
-
-              {result === "ACCEPTED" && (
-                <span>
-                  All test cases passed. Your solution has been
-                  accepted.
-                </span>
-              )}
-
-              {result === "WRONG_ANSWER" && (
-                <span>
-                  Your program ran successfully, but the output did
-                  not match the expected result.
-                </span>
-              )}
-
-              {result === "COMPILATION_ERROR" && (
-                <span>
-                  Your Java source could not be compiled. Check the
-                  syntax and try again.
-                </span>
-              )}
-
-              {result === "RUNTIME_ERROR" && (
-                <span>
-                  Your program encountered an error while running.
-                </span>
-              )}
-
-              {result === "TIME_LIMIT_EXCEEDED" && (
-                <span>
-                  Your program exceeded the allowed execution time.
-                </span>
-              )}
-
-              {result === "SUBMISSION_FAILED" && (
-                <span>
-                  Something went wrong while submitting. Please try
-                  again.
-                </span>
-              )}
-            </div>
+            {result === "RUNNING" && (
+              <div className="cg-verdict-empty">
+                CodeGavel is executing your solution...
+              </div>
+            )}
           </div>
         </section>
       </main>

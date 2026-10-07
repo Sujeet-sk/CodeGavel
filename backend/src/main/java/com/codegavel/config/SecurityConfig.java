@@ -3,6 +3,7 @@ package com.codegavel.config;
 import com.codegavel.security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -55,8 +56,17 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/api/problems/**").permitAll()
+
+                        // Problems can be viewed publicly.
+                        .requestMatchers(HttpMethod.GET, "/api/problems/**").permitAll()
+
+                        // Problem creation is disabled for public/API users.
+                        // We'll use the seed/import system later.
+                        .requestMatchers(HttpMethod.POST, "/api/problems/**").denyAll()
+
+                        // Submissions require authentication.
                         .requestMatchers("/api/submissions/**").authenticated()
+
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(

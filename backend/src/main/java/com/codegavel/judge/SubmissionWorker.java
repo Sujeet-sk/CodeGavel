@@ -6,6 +6,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 @Component
 public class SubmissionWorker {
 
@@ -32,9 +34,15 @@ public class SubmissionWorker {
             return;
         }
 
-        Submission submission = submissionRepository
-                .findById(Long.parseLong(submissionId))
-                .orElse(null);
+        Submission submission;
+
+        try {
+            submission = submissionRepository
+                    .findById(Long.parseLong(submissionId))
+                    .orElse(null);
+        } catch (NumberFormatException e) {
+            return;
+        }
 
         if (submission == null) {
             return;
@@ -44,14 +52,26 @@ public class SubmissionWorker {
             submission.setStatus("RUNNING");
             submissionRepository.save(submission);
 
-            JudgeResult result = judgeService.judgeSubmission(submission);
+            JudgeResult result =
+                    judgeService.judgeSubmission(submission);
 
             submission.setStatus(result.getStatus());
-            submission.setExecutionTimeMs(result.getExecutionTimeMs());
+            submission.setExecutionTimeMs(
+                    result.getExecutionTimeMs()
+            );
+            submission.setCompletedAt(
+                    LocalDateTime.now()
+            );
+
             submissionRepository.save(submission);
 
         } catch (Exception e) {
+
             submission.setStatus("SYSTEM_ERROR");
+            submission.setCompletedAt(
+                    LocalDateTime.now()
+            );
+
             submissionRepository.save(submission);
         }
     }

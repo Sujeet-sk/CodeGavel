@@ -24,6 +24,9 @@ public class TestCase {
 
     private Long timeLimitMs = 2000L;
 
+    @Column(nullable = false)
+    private boolean hidden = true;
+
     public Long getId() {
         return id;
     }
@@ -58,5 +61,13 @@ public class TestCase {
 
     public void setTimeLimitMs(Long timeLimitMs) {
         this.timeLimitMs = timeLimitMs;
+    }
+
+    public boolean isHidden() {
+        return hidden;
+    }
+
+    public void setHidden(boolean hidden) {
+        this.hidden = hidden;
     }
 }

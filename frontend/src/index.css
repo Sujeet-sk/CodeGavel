@@ -2027,3 +2027,260 @@ textarea:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+/* CodeGavel Problem Details */
+
+.cg-problem-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 26px;
+}
+
+.cg-problem-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border: 1px solid rgba(105, 224, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(105, 224, 255, 0.06);
+  color: #d9f8ff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.cg-detail-section {
+  margin: 22px 0;
+}
+
+.cg-detail-heading {
+  margin-bottom: 9px;
+  color: #f4f7fb;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.cg-detail-content {
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #aeb8c7;
+  font-size: 13px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+.cg-info-card {
+  display: flex;
+  gap: 12px;
+  margin: 24px 0;
+  padding: 16px;
+  border: 1px solid rgba(72, 220, 235, 0.16);
+  border-radius: 14px;
+  background: rgba(72, 220, 235, 0.055);
+}
+
+.cg-info-icon {
+  flex: 0 0 auto;
+  color: #65e3f4;
+}
+
+.cg-info-card strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #f3fbff;
+  font-size: 13px;
+}
+
+.cg-info-card span {
+  display: block;
+  color: #91a6b8;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.cg-example-block {
+  margin-top: 24px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.cg-example-title {
+  margin-bottom: 12px;
+  color: #f3f5f8;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cg-example-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.cg-example-row:first-of-type {
+  border-top: 0;
+}
+
+.cg-example-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #8393a5;
+  font-size: 12px;
+}
+
+.cg-example-row strong {
+  color: #e8edf4;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.cg-hint-card {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 16px;
+  border: 1px solid rgba(177, 108, 255, 0.18);
+  border-radius: 14px;
+  background: rgba(177, 108, 255, 0.055);
+}
+
+.cg-hint-icon {
+  flex: 0 0 auto;
+  color: #c99cff;
+}
+
+.cg-hint-card strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #eee5ff;
+  font-size: 13px;
+}
+
+.cg-hint-card span {
+  display: block;
+  color: #aaa7b9;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .cg-problem-tags {
+    margin-top: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .cg-problem-tags {
+    gap: 7px;
+    margin: 18px 0 20px;
+  }
+
+  .cg-problem-tag {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .cg-detail-section {
+    margin: 18px 0;
+  }
+
+  .cg-detail-content {
+    padding: 12px 13px;
+    font-size: 12px;
+  }
+
+  .cg-example-block,
+  .cg-info-card,
+  .cg-hint-card {
+    padding: 13px;
+  }
+}
+
+/* ---------- Problem Examples ---------- */
+
+.cg-examples-section {
+  margin: 26px 0;
+}
+
+.cg-examples-heading {
+  margin-bottom: 12px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.cg-example-card {
+  margin-bottom: 12px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.cg-example-card-title {
+  margin-bottom: 12px;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cg-example-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.cg-example-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.cg-example-card pre {
+  margin: 0;
+  padding: 11px 12px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #080b10;
+  color: #dce8f3;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.cg-example-explanation {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.cg-example-explanation strong {
+  color: var(--text);
+}
+
+@media (max-width: 700px) {
+  .cg-example-grid {
+    grid-template-columns: 1fr;
+  }
+}

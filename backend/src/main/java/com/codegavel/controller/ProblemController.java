@@ -1,5 +1,6 @@
 package com.codegavel.controller;
 
+import com.codegavel.dto.ProblemResponse;
 import com.codegavel.entity.Problem;
 import com.codegavel.service.ProblemService;
 import org.springframework.http.HttpStatus;
@@ -18,18 +19,21 @@ public class ProblemController {
     }
 
     @GetMapping
-    public List<Problem> getAllProblems() {
-        return problemService.getAllProblems();
+    public List<ProblemResponse> getAllProblems() {
+        return problemService.getAllProblems()
+                .stream()
+                .map(ProblemResponse::new)
+                .toList();
     }
 
     @GetMapping("/{id}")
-    public Problem getProblem(@PathVariable Long id) {
-        return problemService.getProblem(id);
+    public ProblemResponse getProblem(@PathVariable Long id) {
+        return new ProblemResponse(problemService.getProblem(id));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Problem createProblem(@RequestBody Problem problem) {
-        return problemService.createProblem(problem);
+    public ProblemResponse createProblem(@RequestBody Problem problem) {
+        return new ProblemResponse(problemService.createProblem(problem));
     }
 }

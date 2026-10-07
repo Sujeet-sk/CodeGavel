@@ -2,6 +2,7 @@ package com.codegavel.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class SubmissionRequest {
 
@@ -9,6 +10,7 @@ public class SubmissionRequest {
     private Long problemId;
 
     @NotBlank
+    @Size(max = 50000, message = "Source code must not exceed 50,000 characters")
     private String sourceCode;
 
     public Long getProblemId() {
