@@ -1,0 +1,24 @@
+{
+  "title": "Frequency Leaderboard",
+  "slug": "frequency-leaderboard",
+  "description": "Given an integer array, return the value with the highest frequency. If multiple values have the same highest frequency, return the smallest value.",
+  "difficulty": "EASY",
+  "topic": "Hashing",
+  "pattern": "Frequency Map",
+  "constraints": "1 <= n <= 100000; -10^9 <= values[i] <= 10^9.",
+  "inputFormat": "First line: n. Second line: n integers.",
+  "outputFormat": "Print the selected value.",
+  "hints": "Build a frequency map, then compare frequency first and value second.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"7\n4 2 4 3 2 4 3","output":"4","explanation":"4 occurs three times, more than every other value.","order":1},
+    {"input":"6\n8 5 8 5 2 2","output":"2","explanation":"All three values occur twice, so the smallest value wins the tie.","order":2}
+  ],
+  "testCases": [
+    {"input":"7\n4 2 4 3 2 4 3","expectedOutput":"4","timeLimitMs":2000,"hidden":true},
+    {"input":"6\n8 5 8 5 2 2","expectedOutput":"2","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n10 10 3 3 3","expectedOutput":"3","timeLimitMs":2000,"hidden":true},
+    {"input":"4\n-2 5 -2 5","expectedOutput":"-2","timeLimitMs":2000,"hidden":true}
+  ]
+}

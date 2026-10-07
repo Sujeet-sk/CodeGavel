@@ -1,0 +1,24 @@
+{
+  "title": "Sorted Signal Lookup",
+  "slug": "sorted-signal-lookup",
+  "description": "Given a sorted array of integers and a target value, return the zero-based index of the target. If the target is absent, return -1.",
+  "difficulty": "EASY",
+  "topic": "Binary Search",
+  "pattern": "Classic Binary Search",
+  "constraints": "1 <= n <= 100000; values are sorted in non-decreasing order; -10^9 <= values[i], target <= 10^9.",
+  "inputFormat": "First line: n. Second line: n sorted integers. Third line: target.",
+  "outputFormat": "Print the zero-based index of the target, or -1.",
+  "hints": "Compare the target with the middle element and discard half of the remaining range.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"7\n1 4 7 9 13 18 21\n13","output":"4","explanation":"13 is located at zero-based index 4.","order":1},
+    {"input":"5\n2 5 8 11 16\n7","output":"-1","explanation":"7 does not occur in the sorted array.","order":2}
+  ],
+  "testCases": [
+    {"input":"7\n1 4 7 9 13 18 21\n13","expectedOutput":"4","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n2 5 8 11 16\n7","expectedOutput":"-1","timeLimitMs":2000,"hidden":true},
+    {"input":"1\n42\n42","expectedOutput":"0","timeLimitMs":2000,"hidden":true},
+    {"input":"6\n-8 -3 0 4 9 15\n-8","expectedOutput":"0","timeLimitMs":2000,"hidden":true}
+  ]
+}

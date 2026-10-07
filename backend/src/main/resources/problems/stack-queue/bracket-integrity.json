@@ -1,0 +1,24 @@
+{
+  "title": "Bracket Integrity",
+  "slug": "bracket-integrity",
+  "description": "Determine whether a string containing parentheses, square brackets and curly brackets is properly balanced and correctly nested.",
+  "difficulty": "EASY",
+  "topic": "Stack / Queue",
+  "pattern": "Stack",
+  "constraints": "1 <= n <= 100000; the string contains only bracket characters.",
+  "inputFormat": "First line: n. Second line: the bracket string.",
+  "outputFormat": "Print YES if every opening bracket is correctly closed, otherwise print NO.",
+  "hints": "Store opening brackets and compare each closing bracket with the most recent opening bracket.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"6\n([]{})","output":"YES","explanation":"Every opening bracket has the correct closing bracket in the proper order.","order":1},
+    {"input":"4\n([)]","output":"NO","explanation":"The closing brackets do not match the required nesting order.","order":2}
+  ],
+  "testCases": [
+    {"input":"6\n([]{})","expectedOutput":"YES","timeLimitMs":2000,"hidden":true},
+    {"input":"4\n([)]","expectedOutput":"NO","timeLimitMs":2000,"hidden":true},
+    {"input":"8\n((()))[]","expectedOutput":"YES","timeLimitMs":2000,"hidden":true},
+    {"input":"3\n(()","expectedOutput":"NO","timeLimitMs":2000,"hidden":true}
+  ]
+}

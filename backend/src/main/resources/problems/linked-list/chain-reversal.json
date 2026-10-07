@@ -1,0 +1,24 @@
+{
+  "title": "Chain Reversal",
+  "slug": "chain-reversal",
+  "description": "Reverse the direction of every link in a singly linked chain and print the resulting node values from the new head to the tail.",
+  "difficulty": "EASY",
+  "topic": "Linked List",
+  "pattern": "Pointer Reversal",
+  "constraints": "1 <= n <= 100000; -10^9 <= node values <= 10^9.",
+  "inputFormat": "First line: n. Second line: n node values in chain order.",
+  "outputFormat": "Print the reversed node values separated by spaces.",
+  "hints": "Keep track of the previous node while redirecting the current node's next pointer.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"5\n3 7 11 15 19","output":"19 15 11 7 3","explanation":"The chain order is completely reversed.","order":1},
+    {"input":"3\n8 4 2","output":"2 4 8","explanation":"The last node becomes the new head.","order":2}
+  ],
+  "testCases": [
+    {"input":"5\n3 7 11 15 19","expectedOutput":"19 15 11 7 3","timeLimitMs":2000,"hidden":true},
+    {"input":"3\n8 4 2","expectedOutput":"2 4 8","timeLimitMs":2000,"hidden":true},
+    {"input":"1\n42","expectedOutput":"42","timeLimitMs":2000,"hidden":true},
+    {"input":"4\n-3 0 5 9","expectedOutput":"9 5 0 -3","timeLimitMs":2000,"hidden":true}
+  ]
+}

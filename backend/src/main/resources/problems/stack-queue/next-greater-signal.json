@@ -1,0 +1,24 @@
+{
+  "title": "Next Greater Signal",
+  "slug": "next-greater-signal",
+  "description": "For every value in an integer array, find the first value to its right that is strictly greater. If no greater value exists, print -1 for that position.",
+  "difficulty": "MEDIUM",
+  "topic": "Stack / Queue",
+  "pattern": "Monotonic Stack",
+  "constraints": "1 <= n <= 100000; -10^9 <= values[i] <= 10^9.",
+  "inputFormat": "First line: n. Second line: n integers.",
+  "outputFormat": "Print n answers separated by spaces.",
+  "hints": "Process values from right to left and maintain a decreasing stack of useful candidates.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"5\n4 7 3 9 2","output":"7 9 9 -1 -1","explanation":"For each position, the first larger value to its right is selected.","order":1},
+    {"input":"4\n5 4 3 2","output":"-1 -1 -1 -1","explanation":"No value has a greater element to its right.","order":2}
+  ],
+  "testCases": [
+    {"input":"5\n4 7 3 9 2","expectedOutput":"7 9 9 -1 -1","timeLimitMs":2000,"hidden":true},
+    {"input":"4\n5 4 3 2","expectedOutput":"-1 -1 -1 -1","timeLimitMs":2000,"hidden":true},
+    {"input":"6\n2 1 2 4 3 5","expectedOutput":"4 2 4 5 5 -1","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n1 1 1 2 3","expectedOutput":"2 2 2 3 -1","timeLimitMs":2000,"hidden":true}
+  ]
+}

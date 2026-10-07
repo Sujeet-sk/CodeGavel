@@ -1,0 +1,24 @@
+{
+  "title": "Root-to-Leaf Target",
+  "slug": "root-to-leaf-target",
+  "description": "Given a binary tree and a target sum, determine whether there exists a root-to-leaf path whose node values add exactly to the target.",
+  "difficulty": "MEDIUM",
+  "topic": "Trees / BST",
+  "pattern": "DFS",
+  "constraints": "1 <= n <= 100000; node values and target are integers; the root is never missing.",
+  "inputFormat": "First line: n. Second line: n values in level-order representation, where -1 represents a missing node. Third line: target sum.",
+  "outputFormat": "Print YES if a root-to-leaf path has the target sum, otherwise print NO.",
+  "hints": "Carry the remaining required sum while traversing from the root to each leaf.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"7\n5 4 8 11 -1 13 4\n20","output":"YES","explanation":"The path 5 -> 4 -> 11 sums to 20.","order":1},
+    {"input":"7\n5 4 8 11 -1 13 4\n19","output":"NO","explanation":"No root-to-leaf path produces a sum of 19.","order":2}
+  ],
+  "testCases": [
+    {"input":"7\n5 4 8 11 -1 13 4\n20","expectedOutput":"YES","timeLimitMs":2000,"hidden":true},
+    {"input":"7\n5 4 8 11 -1 13 4\n19","expectedOutput":"NO","timeLimitMs":2000,"hidden":true},
+    {"input":"3\n1 2 3\n4","expectedOutput":"YES","timeLimitMs":2000,"hidden":true},
+    {"input":"3\n1 2 3\n5","expectedOutput":"YES","timeLimitMs":2000,"hidden":true}
+  ]
+}

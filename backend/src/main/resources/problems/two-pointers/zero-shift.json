@@ -1,0 +1,24 @@
+{
+  "title": "Zero Shift",
+  "slug": "zero-shift",
+  "description": "Move every zero in an integer array to the end while keeping the relative order of all non-zero values unchanged.",
+  "difficulty": "EASY",
+  "topic": "Two Pointers / Sliding Window",
+  "pattern": "Two Pointers",
+  "constraints": "1 <= n <= 100000; -10^9 <= values[i] <= 10^9.",
+  "inputFormat": "First line: n. Second line: n integers.",
+  "outputFormat": "Print the resulting array with elements separated by spaces.",
+  "hints": "Maintain the position where the next non-zero value should be placed.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"7\n0 4 0 2 7 0 5","output":"4 2 7 5 0 0 0","explanation":"The non-zero values keep their original relative order and all zeros move to the end.","order":1},
+    {"input":"5\n1 2 3 4 5","output":"1 2 3 4 5","explanation":"There are no zeros, so the array remains unchanged.","order":2}
+  ],
+  "testCases": [
+    {"input":"7\n0 4 0 2 7 0 5","expectedOutput":"4 2 7 5 0 0 0","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n1 2 3 4 5","expectedOutput":"1 2 3 4 5","timeLimitMs":2000,"hidden":true},
+    {"input":"6\n0 0 0 3 8 1","expectedOutput":"3 8 1 0 0 0","timeLimitMs":2000,"hidden":true},
+    {"input":"4\n0 0 0 0","expectedOutput":"0 0 0 0","timeLimitMs":2000,"hidden":true}
+  ]
+}

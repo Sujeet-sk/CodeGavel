@@ -1,0 +1,24 @@
+{
+  "title": "Character Frequency Lock",
+  "slug": "character-frequency-lock",
+  "description": "Given a lowercase string and a frequency k, print all distinct characters that occur exactly k times. Print them in alphabetical order.",
+  "difficulty": "EASY",
+  "topic": "Strings",
+  "pattern": "Frequency Counting",
+  "constraints": "1 <= n <= 100000; the string contains only lowercase English letters; 1 <= k <= n.",
+  "inputFormat": "First line: n. Second line: the string. Third line: k.",
+  "outputFormat": "Print the qualifying characters without spaces in alphabetical order. Print -1 if none qualify.",
+  "hints": "Count each character first, then scan the alphabet in order.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"7\naabbbcc\n2","output":"ac","explanation":"a and c each appear exactly twice.","order":1},
+    {"input":"6\nbanana\n3","output":"a","explanation":"Only a appears exactly three times.","order":2}
+  ],
+  "testCases": [
+    {"input":"7\naabbbcc\n2","expectedOutput":"ac","timeLimitMs":2000,"hidden":true},
+    {"input":"6\nbanana\n3","expectedOutput":"a","timeLimitMs":2000,"hidden":true},
+    {"input":"8\naabbccdd\n2","expectedOutput":"abcd","timeLimitMs":2000,"hidden":true},
+    {"input":"5\nabcde\n2","expectedOutput":"-1","timeLimitMs":2000,"hidden":true}
+  ]
+}

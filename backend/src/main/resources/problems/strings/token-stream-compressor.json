@@ -1,0 +1,24 @@
+{
+  "title": "Token Stream Compressor",
+  "slug": "token-stream-compressor",
+  "description": "Compress a lowercase string by replacing every consecutive group of equal characters with the character followed by its group length.",
+  "difficulty": "EASY",
+  "topic": "Strings",
+  "pattern": "Run Length Encoding",
+  "constraints": "1 <= n <= 100000; the string contains only lowercase English letters.",
+  "inputFormat": "First line: n. Second line: the string.",
+  "outputFormat": "Print the compressed string without spaces.",
+  "hints": "Track the start of each consecutive group and count how long it continues.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"6\naaabbc","output":"a3b2c1","explanation":"The groups are aaa, bb and c.","order":1},
+    {"input":"8\nwwwwxyzz","output":"w4x1y1z2","explanation":"Each consecutive group is represented by its character and count.","order":2}
+  ],
+  "testCases": [
+    {"input":"6\naaabbc","expectedOutput":"a3b2c1","timeLimitMs":2000,"hidden":true},
+    {"input":"8\nwwwwxyzz","expectedOutput":"w4x1y1z2","timeLimitMs":2000,"hidden":true},
+    {"input":"5\nabcde","expectedOutput":"a1b1c1d1e1","timeLimitMs":2000,"hidden":true},
+    {"input":"9\naaaaaaaaa","expectedOutput":"a9","timeLimitMs":2000,"hidden":true}
+  ]
+}

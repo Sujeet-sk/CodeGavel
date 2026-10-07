@@ -1,0 +1,24 @@
+{
+  "title": "Tree Height Monitor",
+  "slug": "tree-height-monitor",
+  "description": "Given a binary tree in level-order representation where -1 represents a missing child, determine its height measured as the number of nodes on the longest root-to-leaf path.",
+  "difficulty": "EASY",
+  "topic": "Trees / BST",
+  "pattern": "Tree Height",
+  "constraints": "1 <= n <= 100000; node values are integers; the root is never missing.",
+  "inputFormat": "First line: n. Second line: n values in level-order representation, where -1 represents a missing node.",
+  "outputFormat": "Print the height of the tree.",
+  "hints": "The height of a node is one plus the larger height of its two children.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"7\n10 5 15 2 7 -1 20","output":"3","explanation":"The longest root-to-leaf path contains three nodes.","order":1},
+    {"input":"5\n1 2 -1 3 -1","output":"3","explanation":"The chain 1 -> 2 -> 3 contains three nodes.","order":2}
+  ],
+  "testCases": [
+    {"input":"7\n10 5 15 2 7 -1 20","expectedOutput":"3","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n1 2 -1 3 -1","expectedOutput":"3","timeLimitMs":2000,"hidden":true},
+    {"input":"1\n99","expectedOutput":"1","timeLimitMs":2000,"hidden":true},
+    {"input":"7\n8 4 12 2 6 10 14","expectedOutput":"3","timeLimitMs":2000,"hidden":true}
+  ]
+}

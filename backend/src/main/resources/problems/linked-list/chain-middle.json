@@ -1,0 +1,24 @@
+{
+  "title": "Chain Middle",
+  "slug": "chain-middle",
+  "description": "Given a singly linked chain of nodes, print the value of its middle node. When the chain has an even number of nodes, return the second middle node.",
+  "difficulty": "EASY",
+  "topic": "Linked List",
+  "pattern": "Fast and Slow Pointers",
+  "constraints": "1 <= n <= 100000; -10^9 <= node values <= 10^9.",
+  "inputFormat": "First line: n. Second line: n node values in chain order.",
+  "outputFormat": "Print the value of the middle node.",
+  "hints": "Move one pointer twice as fast as the other.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"5\n10 20 30 40 50","output":"30","explanation":"30 is the middle node of the five-node chain.","order":1},
+    {"input":"6\n4 8 12 16 20 24","output":"16","explanation":"For an even-sized chain, the second middle node is selected.","order":2}
+  ],
+  "testCases": [
+    {"input":"5\n10 20 30 40 50","expectedOutput":"30","timeLimitMs":2000,"hidden":true},
+    {"input":"6\n4 8 12 16 20 24","expectedOutput":"16","timeLimitMs":2000,"hidden":true},
+    {"input":"1\n99","expectedOutput":"99","timeLimitMs":2000,"hidden":true},
+    {"input":"4\n7 3 9 2","expectedOutput":"9","timeLimitMs":2000,"hidden":true}
+  ]
+}

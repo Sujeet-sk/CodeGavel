@@ -1,0 +1,23 @@
+{
+  "title": "Target Pair Witness",
+  "slug": "target-pair-witness",
+  "description": "Given an integer array and a target value, find the zero-based indices of two different elements whose sum equals the target. Return the pair in increasing index order.",
+  "difficulty": "EASY",
+  "topic": "Arrays",
+  "pattern": "HashMap",
+  "constraints": "2 <= n <= 100000; -10^9 <= values[i], target <= 10^9; exactly one valid pair exists.",
+  "inputFormat": "First line: n. Second line: n integers. Third line: target.",
+  "outputFormat": "Print the two indices in increasing order.",
+  "hints": "For every value, check whether its required complement has already appeared.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"5\n4 1 9 7 3\n10","output":"1 2","explanation":"The values 1 and 9 add up to 10, and their zero-based indices are 1 and 2.","order":1},
+    {"input":"4\n8 2 5 6\n11","output":"2 3","explanation":"The values 5 and 6 add up to 11, and their zero-based indices are 2 and 3.","order":2}
+  ],
+  "testCases": [
+    {"input":"5\n4 1 9 7 3\n10","expectedOutput":"1 2","timeLimitMs":2000,"hidden":true},
+    {"input":"4\n8 2 5 6\n11","expectedOutput":"2 3","timeLimitMs":2000,"hidden":true},
+    {"input":"6\n10 -2 7 4 9 1\n13","expectedOutput":"3 4","timeLimitMs":2000,"hidden":true}
+  ]
+}

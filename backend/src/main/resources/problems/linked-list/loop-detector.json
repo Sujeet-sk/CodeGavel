@@ -1,0 +1,24 @@
+{
+  "title": "Loop Detector",
+  "slug": "loop-detector",
+  "description": "Given a linked chain described by node values and a next-index array, determine whether following next links eventually revisits a node.",
+  "difficulty": "MEDIUM",
+  "topic": "Linked List",
+  "pattern": "Fast and Slow Pointers",
+  "constraints": "1 <= n <= 100000; each next index is -1 or a valid node index.",
+  "inputFormat": "First line: n. Second line: n node values. Third line: n next indices.",
+  "outputFormat": "Print YES if the chain contains a cycle, otherwise print NO.",
+  "hints": "A cycle causes a fast pointer to eventually meet a slow pointer.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"5\n10 20 30 40 50\n1 2 3 4 -1","output":"NO","explanation":"The links end at -1, so no node is revisited.","order":1},
+    {"input":"5\n10 20 30 40 50\n1 2 3 4 2","output":"YES","explanation":"Following the links from node 2 eventually returns to node 2.","order":2}
+  ],
+  "testCases": [
+    {"input":"5\n10 20 30 40 50\n1 2 3 4 -1","expectedOutput":"NO","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n10 20 30 40 50\n1 2 3 4 2","expectedOutput":"YES","timeLimitMs":2000,"hidden":true},
+    {"input":"1\n7\n-1","expectedOutput":"NO","timeLimitMs":2000,"hidden":true},
+    {"input":"4\n5 8 2 9\n1 2 0 -1","expectedOutput":"YES","timeLimitMs":2000,"hidden":true}
+  ]
+}

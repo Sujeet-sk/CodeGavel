@@ -1,0 +1,24 @@
+{
+  "title": "Network Reachability",
+  "slug": "network-reachability",
+  "description": "Given an undirected network of nodes and connections, determine whether a path exists from a specified source node to a destination node.",
+  "difficulty": "EASY",
+  "topic": "Graphs",
+  "pattern": "BFS / DFS",
+  "constraints": "1 <= n <= 100000; 0 <= m <= 200000; nodes are numbered from 0 to n-1.",
+  "inputFormat": "First line: n and m. Next m lines: two integers u and v describing an undirected connection. Final line: source and destination.",
+  "outputFormat": "Print YES if the destination is reachable from the source, otherwise print NO.",
+  "hints": "Start from the source and visit every unvisited neighboring node using BFS or DFS.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"5 4\n0 1\n1 2\n2 3\n3 4\n0 4","output":"YES","explanation":"A path exists from 0 through 1, 2 and 3 to 4.","order":1},
+    {"input":"5 3\n0 1\n1 2\n3 4\n0 4","output":"NO","explanation":"The graph has two disconnected components.","order":2}
+  ],
+  "testCases": [
+    {"input":"5 4\n0 1\n1 2\n2 3\n3 4\n0 4","expectedOutput":"YES","timeLimitMs":2000,"hidden":true},
+    {"input":"5 3\n0 1\n1 2\n3 4\n0 4","expectedOutput":"NO","timeLimitMs":2000,"hidden":true},
+    {"input":"4 2\n0 1\n2 3\n2 3","expectedOutput":"YES","timeLimitMs":2000,"hidden":true},
+    {"input":"1 0\n0 0","expectedOutput":"YES","timeLimitMs":2000,"hidden":true}
+  ]
+}

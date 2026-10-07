@@ -1,0 +1,24 @@
+{
+  "title": "Longest Common Signal",
+  "slug": "longest-common-signal",
+  "description": "Given two strings, find the length of their longest subsequence that appears in both strings while preserving the relative order of characters.",
+  "difficulty": "MEDIUM",
+  "topic": "Dynamic Programming",
+  "pattern": "LCS",
+  "constraints": "1 <= n,m <= 1000; both strings contain lowercase English letters.",
+  "inputFormat": "First line: first string. Second line: second string.",
+  "outputFormat": "Print the length of the longest common subsequence.",
+  "hints": "When the current characters match, extend the diagonal result. Otherwise keep the better result from skipping one character.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"abcde\nace","output":"3","explanation":"The longest common subsequence is ace.","order":1},
+    {"input":"stone\nlongest","output":"3","explanation":"One longest common subsequence is one.","order":2}
+  ],
+  "testCases": [
+    {"input":"abcde\nace","expectedOutput":"3","timeLimitMs":2000,"hidden":true},
+    {"input":"stone\nlongest","expectedOutput":"3","timeLimitMs":2000,"hidden":true},
+    {"input":"abc\nabc","expectedOutput":"3","timeLimitMs":2000,"hidden":true},
+    {"input":"abc\ndef","expectedOutput":"0","timeLimitMs":2000,"hidden":true}
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "title": "First Valid Position",
+  "slug": "first-valid-position",
+  "description": "Given a sorted array that may contain repeated values, find the first zero-based index at which a target occurs. Return -1 if the target is absent.",
+  "difficulty": "MEDIUM",
+  "topic": "Binary Search",
+  "pattern": "Lower Bound",
+  "constraints": "1 <= n <= 100000; values are sorted in non-decreasing order; -10^9 <= values[i], target <= 10^9.",
+  "inputFormat": "First line: n. Second line: n sorted integers. Third line: target.",
+  "outputFormat": "Print the first index containing the target, or -1.",
+  "hints": "When the middle value equals the target, record it and continue searching toward the left.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"8\n1 2 2 2 5 7 7 9\n2","output":"1","explanation":"The first occurrence of 2 is at index 1.","order":1},
+    {"input":"6\n3 3 5 8 8 10\n4","output":"-1","explanation":"4 does not occur in the array.","order":2}
+  ],
+  "testCases": [
+    {"input":"8\n1 2 2 2 5 7 7 9\n2","expectedOutput":"1","timeLimitMs":2000,"hidden":true},
+    {"input":"6\n3 3 5 8 8 10\n4","expectedOutput":"-1","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n4 4 4 4 4\n4","expectedOutput":"0","timeLimitMs":2000,"hidden":true},
+    {"input":"7\n-3 -3 -1 0 0 0 8\n0","expectedOutput":"3","timeLimitMs":2000,"hidden":true}
+  ]
+}

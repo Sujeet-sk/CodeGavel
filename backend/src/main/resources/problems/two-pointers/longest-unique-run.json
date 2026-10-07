@@ -1,0 +1,24 @@
+{
+  "title": "Longest Unique Run",
+  "slug": "longest-unique-run",
+  "description": "Given a string, find the length of the longest contiguous fragment in which every character appears at most once.",
+  "difficulty": "MEDIUM",
+  "topic": "Two Pointers / Sliding Window",
+  "pattern": "Sliding Window",
+  "constraints": "1 <= n <= 100000; the string contains lowercase English letters.",
+  "inputFormat": "First line: n. Second line: the string.",
+  "outputFormat": "Print the length of the longest fragment with no repeated character.",
+  "hints": "Use a sliding window and move the left boundary whenever a duplicate enters the window.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"8\nabcaefgh","output":"6","explanation":"The longest unique fragment is bcaefg or caefgh, both of length 6.","order":1},
+    {"input":"6\naaaaaa","output":"1","explanation":"A unique fragment can contain only one a.","order":2}
+  ],
+  "testCases": [
+    {"input":"8\nabcaefgh","expectedOutput":"6","timeLimitMs":2000,"hidden":true},
+    {"input":"6\naaaaaa","expectedOutput":"1","timeLimitMs":2000,"hidden":true},
+    {"input":"9\npwwkewxyz","expectedOutput":"6","timeLimitMs":2000,"hidden":true},
+    {"input":"5\nabcde","expectedOutput":"5","timeLimitMs":2000,"hidden":true}
+  ]
+}

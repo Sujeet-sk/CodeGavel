@@ -1,0 +1,24 @@
+{
+  "title": "Minimum Platform Allocation",
+  "slug": "minimum-platform-allocation",
+  "description": "Given arrival and departure times for trains at a station, determine the minimum number of platforms required so that no train waits for a free platform.",
+  "difficulty": "MEDIUM",
+  "topic": "Greedy",
+  "pattern": "Sorting and Two Pointers",
+  "constraints": "1 <= n <= 100000; 0 <= arrival, departure <= 10^9; every departure is after its corresponding arrival.",
+  "inputFormat": "First line: n. Second line: n arrival times. Third line: n departure times.",
+  "outputFormat": "Print the minimum number of platforms required.",
+  "hints": "Sort arrivals and departures separately and track how many trains are currently present.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"6\n900 940 950 1100 1500 1800\n910 1200 1120 1130 1900 2000","output":"3","explanation":"At the busiest moment, three trains require platforms simultaneously.","order":1},
+    {"input":"3\n100 200 300\n150 250 350","output":"1","explanation":"The trains do not overlap, so one platform is sufficient.","order":2}
+  ],
+  "testCases": [
+    {"input":"6\n900 940 950 1100 1500 1800\n910 1200 1120 1130 1900 2000","expectedOutput":"3","timeLimitMs":2000,"hidden":true},
+    {"input":"3\n100 200 300\n150 250 350","expectedOutput":"1","timeLimitMs":2000,"hidden":true},
+    {"input":"4\n100 100 100 100\n200 200 200 200","expectedOutput":"4","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n1 3 5 7 9\n2 4 6 8 10","expectedOutput":"1","timeLimitMs":2000,"hidden":true}
+  ]
+}

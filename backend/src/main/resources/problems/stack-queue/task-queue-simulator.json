@@ -1,0 +1,23 @@
+{
+  "title": "Task Queue Simulator",
+  "slug": "task-queue-simulator",
+  "description": "Simulate a first-in-first-out task queue. ADD x inserts a task identifier at the back and PROCESS removes the task at the front. Every PROCESS operation is guaranteed to have a task available.",
+  "difficulty": "EASY",
+  "topic": "Stack / Queue",
+  "pattern": "Queue Simulation",
+  "constraints": "1 <= q <= 100000; task identifiers are integers.",
+  "inputFormat": "First line: q. Each following line is either ADD x or PROCESS.",
+  "outputFormat": "For every PROCESS operation, print the processed task identifier on its own line.",
+  "hints": "A queue removes elements in first-in-first-out order.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"7\nADD 11\nADD 22\nPROCESS\nADD 33\nPROCESS\nADD 44\nPROCESS","output":"11\n22\n33","explanation":"Tasks are processed in the same order in which they entered the queue.","order":1},
+    {"input":"5\nADD 8\nADD 4\nADD 9\nPROCESS\nPROCESS","output":"8\n4","explanation":"The oldest two tasks are processed first.","order":2}
+  ],
+  "testCases": [
+    {"input":"7\nADD 11\nADD 22\nPROCESS\nADD 33\nPROCESS\nADD 44\nPROCESS","expectedOutput":"11\n22\n33","timeLimitMs":2000,"hidden":true},
+    {"input":"5\nADD 8\nADD 4\nADD 9\nPROCESS\nPROCESS","expectedOutput":"8\n4","timeLimitMs":2000,"hidden":true},
+    {"input":"6\nADD -5\nPROCESS\nADD 7\nADD 12\nPROCESS\nPROCESS","expectedOutput":"-5\n7\n12","timeLimitMs":2000,"hidden":true}
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "title": "First Repeated Signal",
+  "slug": "first-repeated-signal",
+  "description": "Scan an integer sequence from left to right and return the first value whose occurrence is seen for the second time. If every value is unique, return -1.",
+  "difficulty": "EASY",
+  "topic": "Hashing",
+  "pattern": "HashSet",
+  "constraints": "1 <= n <= 100000; -10^9 <= values[i] <= 10^9.",
+  "inputFormat": "First line: n. Second line: n integers.",
+  "outputFormat": "Print the first repeated value, or -1 if no value repeats.",
+  "hints": "Keep a set of values that have already appeared.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"6\n4 7 2 7 9 2","output":"7","explanation":"7 is the first value encountered for the second time.","order":1},
+    {"input":"5\n3 8 1 6 4","output":"-1","explanation":"Every value occurs exactly once.","order":2}
+  ],
+  "testCases": [
+    {"input":"6\n4 7 2 7 9 2","expectedOutput":"7","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n3 8 1 6 4","expectedOutput":"-1","timeLimitMs":2000,"hidden":true},
+    {"input":"7\n5 3 8 5 3 8 2","expectedOutput":"5","timeLimitMs":2000,"hidden":true},
+    {"input":"4\n9 9 8 8","expectedOutput":"9","timeLimitMs":2000,"hidden":true}
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Staircase Energy",
+  "slug": "staircase-energy",
+  "description": "Each staircase step has an energy cost. Starting before step 0, you may climb either one or two steps at a time. Find the minimum energy required to reach the top beyond the last step.",
+  "difficulty": "MEDIUM",
+  "topic": "Dynamic Programming",
+  "pattern": "1D DP",
+  "constraints": "2 <= n <= 100000; 0 <= cost[i] <= 10^6.",
+  "inputFormat": "First line: n. Second line: n non-negative step costs.",
+  "outputFormat": "Print the minimum total energy required to reach the top.",
+  "hints": "The cheapest way to reach a step depends on the cheapest ways to reach the previous one or two steps.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"5\n10 15 20 5 10","output":"30","explanation":"An optimal route pays 10 + 15 + 5 to reach the top.","order":1},
+    {"input":"4\n1 100 1 1","output":"2","explanation":"The route can skip expensive step 1 and use the cheaper steps.","order":2}
+  ],
+  "testCases": [
+    {"input":"5\n10 15 20 5 10","expectedOutput":"30","timeLimitMs":2000,"hidden":true},
+    {"input":"4\n1 100 1 1","expectedOutput":"2","timeLimitMs":2000,"hidden":true},
+    {"input":"3\n10 1 10","expectedOutput":"1","timeLimitMs":2000,"hidden":true},
+    {"input":"6\n5 8 2 9 3 4","expectedOutput":"12","timeLimitMs":2000,"hidden":true}
+  ]
+}

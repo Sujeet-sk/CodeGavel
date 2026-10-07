@@ -1,0 +1,24 @@
+{
+  "title": "Minimum Cover Window",
+  "slug": "minimum-cover-window",
+  "description": "Given two lowercase strings S and T, find the shortest contiguous fragment of S that contains every character of T with at least the required frequency. If no such fragment exists, print -1.",
+  "difficulty": "HARD",
+  "topic": "Two Pointers / Sliding Window",
+  "pattern": "Frequency Window",
+  "constraints": "1 <= |S|, |T| <= 100000; both strings contain only lowercase English letters.",
+  "inputFormat": "First line: S. Second line: T.",
+  "outputFormat": "Print the shortest covering fragment. If multiple fragments have the same length, print the leftmost one. Print -1 if no covering fragment exists.",
+  "hints": "Maintain character frequencies inside a sliding window and shrink it whenever all required characters are covered.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"adobecodebanc\nabc","output":"banc","explanation":"banc contains a, b and c and is the shortest covering fragment.","order":1},
+    {"input":"hello\nworld","output":"-1","explanation":"The required characters cannot all be found in the first string.","order":2}
+  ],
+  "testCases": [
+    {"input":"adobecodebanc\nabc","expectedOutput":"banc","timeLimitMs":2000,"hidden":true},
+    {"input":"hello\nworld","expectedOutput":"-1","timeLimitMs":2000,"hidden":true},
+    {"input":"aaabdabca\naba","expectedOutput":"aba","timeLimitMs":2000,"hidden":true},
+    {"input":"xyzabca\nabc","expectedOutput":"abc","timeLimitMs":2000,"hidden":true}
+  ]
+}

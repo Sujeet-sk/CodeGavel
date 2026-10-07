@@ -1,0 +1,24 @@
+{
+  "title": "Ordered Tree Lookup",
+  "slug": "ordered-tree-lookup",
+  "description": "Given a binary search tree and a target value, determine whether the target exists in the tree.",
+  "difficulty": "EASY",
+  "topic": "Trees / BST",
+  "pattern": "BST Search",
+  "constraints": "1 <= n <= 100000; all BST node values are distinct; the root is never missing.",
+  "inputFormat": "First line: n. Second line: n values in level-order representation, where -1 represents a missing node. Third line: target.",
+  "outputFormat": "Print YES if the target exists, otherwise print NO.",
+  "hints": "At every node, use the BST ordering property to decide whether to move left or right.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"7\n8 4 12 2 6 10 14\n10","output":"YES","explanation":"10 is present in the right subtree of 8.","order":1},
+    {"input":"7\n8 4 12 2 6 10 14\n7","output":"NO","explanation":"7 is not present in the BST.","order":2}
+  ],
+  "testCases": [
+    {"input":"7\n8 4 12 2 6 10 14\n10","expectedOutput":"YES","timeLimitMs":2000,"hidden":true},
+    {"input":"7\n8 4 12 2 6 10 14\n7","expectedOutput":"NO","timeLimitMs":2000,"hidden":true},
+    {"input":"3\n5 3 7\n3","expectedOutput":"YES","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n10 5 15 2 7\n20","expectedOutput":"NO","timeLimitMs":2000,"hidden":true}
+  ]
+}

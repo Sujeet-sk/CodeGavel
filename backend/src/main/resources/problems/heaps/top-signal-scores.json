@@ -1,0 +1,24 @@
+{
+  "title": "Top Signal Scores",
+  "slug": "top-signal-scores",
+  "description": "Given an integer array and k, print the k largest values in descending order. Duplicate values are retained.",
+  "difficulty": "MEDIUM",
+  "topic": "Heaps",
+  "pattern": "Priority Queue",
+  "constraints": "1 <= k <= n <= 100000; -10^9 <= values[i] <= 10^9.",
+  "inputFormat": "First line: n and k. Second line: n integers.",
+  "outputFormat": "Print the k largest values in descending order separated by spaces.",
+  "hints": "A heap can maintain the most useful candidates while scanning the array.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"7 3\n8 2 15 4 11 7 6","output":"15 11 8","explanation":"The three largest values are 15, 11 and 8.","order":1},
+    {"input":"6 4\n5 5 2 9 1 9","output":"9 9 5 5","explanation":"Duplicate values count separately when selecting the top four.","order":2}
+  ],
+  "testCases": [
+    {"input":"7 3\n8 2 15 4 11 7 6","expectedOutput":"15 11 8","timeLimitMs":2000,"hidden":true},
+    {"input":"6 4\n5 5 2 9 1 9","expectedOutput":"9 9 5 5","timeLimitMs":2000,"hidden":true},
+    {"input":"5 1\n-3 7 2 9 4","expectedOutput":"9","timeLimitMs":2000,"hidden":true},
+    {"input":"4 4\n1 3 2 4","expectedOutput":"4 3 2 1","timeLimitMs":2000,"hidden":true}
+  ]
+}

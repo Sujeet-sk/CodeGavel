@@ -1,0 +1,24 @@
+{
+  "title": "Ordered Tree Range Sum",
+  "slug": "ordered-tree-range-sum",
+  "description": "Given a binary search tree and two bounds L and R, calculate the sum of all node values whose values lie in the inclusive range [L, R].",
+  "difficulty": "MEDIUM",
+  "topic": "Trees / BST",
+  "pattern": "BST Pruning",
+  "constraints": "1 <= n <= 100000; all BST node values are distinct; L <= R; the root is never missing.",
+  "inputFormat": "First line: n. Second line: n values in level-order representation, where -1 represents a missing node. Third line: L and R.",
+  "outputFormat": "Print the sum of all node values in the inclusive range [L, R].",
+  "hints": "Use the BST ordering to avoid exploring subtrees that cannot contain values in the range.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"7\n8 4 12 2 6 10 14\n5 12","output":"40","explanation":"The values 6, 8, 10 and 12 lie in the requested range.","order":1},
+    {"input":"7\n8 4 12 2 6 10 14\n1 3","output":"2","explanation":"Only the node with value 2 lies in the requested range.","order":2}
+  ],
+  "testCases": [
+    {"input":"7\n8 4 12 2 6 10 14\n5 12","expectedOutput":"40","timeLimitMs":2000,"hidden":true},
+    {"input":"7\n8 4 12 2 6 10 14\n1 3","expectedOutput":"2","timeLimitMs":2000,"hidden":true},
+    {"input":"7\n8 4 12 2 6 10 14\n1 20","expectedOutput":"56","timeLimitMs":2000,"hidden":true},
+    {"input":"7\n8 4 12 2 6 10 14\n9 11","expectedOutput":"10","timeLimitMs":2000,"hidden":true}
+  ]
+}

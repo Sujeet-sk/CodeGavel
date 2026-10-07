@@ -1,0 +1,24 @@
+{
+  "title": "Pair Difference Detector",
+  "slug": "pair-difference-detector",
+  "description": "Given an integer array and a non-negative value k, determine whether two different elements have an absolute difference of exactly k.",
+  "difficulty": "EASY",
+  "topic": "Hashing",
+  "pattern": "HashSet",
+  "constraints": "2 <= n <= 100000; 0 <= k <= 10^9; -10^9 <= values[i] <= 10^9.",
+  "inputFormat": "First line: n. Second line: n integers. Third line: k.",
+  "outputFormat": "Print YES if such a pair exists, otherwise print NO.",
+  "hints": "For each value x, check whether x-k or x+k has already been seen.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"5\n4 9 1 7 3\n6","output":"YES","explanation":"The values 1 and 7 differ by exactly 6.","order":1},
+    {"input":"5\n2 8 13 20 25\n4","output":"NO","explanation":"No two values have an absolute difference of 4.","order":2}
+  ],
+  "testCases": [
+    {"input":"5\n4 9 1 7 3\n6","expectedOutput":"YES","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n2 8 13 20 25\n4","expectedOutput":"NO","timeLimitMs":2000,"hidden":true},
+    {"input":"4\n5 5 8 12\n0","expectedOutput":"YES","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n-4 2 9 15 21\n7","expectedOutput":"YES","timeLimitMs":2000,"hidden":true}
+  ]
+}

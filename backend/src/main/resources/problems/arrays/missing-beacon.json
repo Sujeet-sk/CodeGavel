@@ -1,0 +1,23 @@
+{
+  "title": "Missing Beacon",
+  "slug": "missing-beacon",
+  "description": "An array contains n distinct integers chosen from the range 0 through n. Exactly one value from that range is missing. Find the missing value.",
+  "difficulty": "EASY",
+  "topic": "Arrays",
+  "pattern": "XOR",
+  "constraints": "1 <= n <= 100000; all array values are distinct; 0 <= values[i] <= n.",
+  "inputFormat": "First line: n. Second line: n integers.",
+  "outputFormat": "Print the missing value.",
+  "hints": "Pair equal values using XOR, or compare the expected and actual sums carefully.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"5\n0 1 4 2 5","output":"3","explanation":"The range 0 through 5 contains every value except 3.","order":1},
+    {"input":"3\n1 0 2","output":"3","explanation":"The only missing value from 0 through 3 is 3.","order":2}
+  ],
+  "testCases": [
+    {"input":"5\n0 1 4 2 5","expectedOutput":"3","timeLimitMs":2000,"hidden":true},
+    {"input":"3\n1 0 2","expectedOutput":"3","timeLimitMs":2000,"hidden":true},
+    {"input":"1\n0","expectedOutput":"1","timeLimitMs":2000,"hidden":true}
+  ]
+}

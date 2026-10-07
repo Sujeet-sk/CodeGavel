@@ -1,0 +1,24 @@
+{
+  "title": "Longest Balanced Fragment",
+  "slug": "longest-balanced-fragment",
+  "description": "Given a binary string, find the length of the longest contiguous fragment containing an equal number of 0s and 1s.",
+  "difficulty": "MEDIUM",
+  "topic": "Strings",
+  "pattern": "Prefix Sum",
+  "constraints": "1 <= n <= 100000; the string contains only 0 and 1.",
+  "inputFormat": "First line: n. Second line: the binary string.",
+  "outputFormat": "Print the maximum length of a balanced fragment.",
+  "hints": "Treat 0 as -1 and 1 as +1. Equal prefix sums mark a balanced interval.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"6\n001101","output":"4","explanation":"The fragment 0110 contains two 0s and two 1s.","order":1},
+    {"input":"5\n11100","output":"4","explanation":"The fragment 1100 contains two 1s and two 0s.","order":2}
+  ],
+  "testCases": [
+    {"input":"6\n001101","expectedOutput":"4","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n11100","expectedOutput":"4","timeLimitMs":2000,"hidden":true},
+    {"input":"8\n01011010","expectedOutput":"8","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n11111","expectedOutput":"0","timeLimitMs":2000,"hidden":true}
+  ]
+}

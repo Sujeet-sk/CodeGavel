@@ -1,0 +1,24 @@
+{
+  "title": "Tree Level Scanner",
+  "slug": "tree-level-scanner",
+  "description": "Given a binary tree in level-order representation where -1 represents a missing child, print the values level by level from left to right.",
+  "difficulty": "EASY",
+  "topic": "Trees / BST",
+  "pattern": "Level Order Traversal",
+  "constraints": "1 <= n <= 100000; node values are integers; the root is never missing.",
+  "inputFormat": "First line: n. Second line: n values in level-order representation, where -1 represents a missing node.",
+  "outputFormat": "Print all existing node values in level-order separated by spaces.",
+  "hints": "Use a queue and process each existing node's children from left to right.",
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 128,
+  "examples": [
+    {"input":"7\n10 5 15 2 7 -1 20","output":"10 5 15 2 7 20","explanation":"The missing child is skipped while the remaining nodes are visited level by level.","order":1},
+    {"input":"3\n8 4 12","output":"8 4 12","explanation":"The tree contains a root and two children.","order":2}
+  ],
+  "testCases": [
+    {"input":"7\n10 5 15 2 7 -1 20","expectedOutput":"10 5 15 2 7 20","timeLimitMs":2000,"hidden":true},
+    {"input":"3\n8 4 12","expectedOutput":"8 4 12","timeLimitMs":2000,"hidden":true},
+    {"input":"5\n1 2 -1 3 4","expectedOutput":"1 2 3 4","timeLimitMs":2000,"hidden":true},
+    {"input":"1\n42","expectedOutput":"42","timeLimitMs":2000,"hidden":true}
+  ]
+}
