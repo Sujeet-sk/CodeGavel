@@ -1,6 +1,7 @@
 package com.codegavel.controller;
 
 import com.codegavel.dto.SubmissionRequest;
+import com.codegavel.dto.SubmissionResponse;
 import com.codegavel.entity.Submission;
 import com.codegavel.service.SubmissionService;
 import jakarta.validation.Valid;
@@ -21,19 +22,22 @@ public class SubmissionController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Submission createSubmission(
+    public SubmissionResponse createSubmission(
             @Valid @RequestBody SubmissionRequest request) {
-        return submissionService.createSubmission(request);
+        return SubmissionResponse.from(submissionService.createSubmission(request));
     }
 
     @GetMapping("/{id}")
-    public Submission getSubmission(@PathVariable Long id) {
-        return submissionService.getSubmission(id);
+    public SubmissionResponse getSubmission(@PathVariable Long id) {
+        return SubmissionResponse.from(submissionService.getSubmission(id));
     }
 
     @GetMapping("/user/{userId}")
-    public List<Submission> getUserSubmissions(
+    public List<SubmissionResponse> getUserSubmissions(
             @PathVariable Long userId) {
-        return submissionService.getUserSubmissions(userId);
+        return submissionService.getUserSubmissions(userId)
+                .stream()
+                .map(SubmissionResponse::from)
+                .toList();
     }
 }

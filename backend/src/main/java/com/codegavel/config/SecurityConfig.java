@@ -55,7 +55,7 @@ public class SecurityConfig {
                 .cors(cors -> {})
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/auth/**", "/error").permitAll()
 
                         // Problems can be viewed publicly.
                         .requestMatchers(HttpMethod.GET, "/api/problems/**").permitAll()

@@ -48,6 +48,20 @@ public class SubmissionService {
             );
         }
 
+        if (request.getSourceCode() == null || request.getSourceCode().isBlank()) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Source code cannot be empty"
+            );
+        }
+
+        if (request.getSourceCode().length() > 50000) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Source code must not exceed 50,000 characters"
+            );
+        }
+
         Problem problem = problemRepository.findById(request.getProblemId())
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,

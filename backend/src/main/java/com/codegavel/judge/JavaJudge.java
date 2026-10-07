@@ -246,9 +246,7 @@ public class JavaJudge {
             int maxCharacters) throws IOException {
 
         byte[] buffer = new byte[4096];
-
-        StringBuilder output =
-                new StringBuilder();
+        StringBuilder output = new StringBuilder();
 
         try (var stream = process.getInputStream()) {
 
@@ -256,31 +254,31 @@ public class JavaJudge {
 
             while ((bytesRead = stream.read(buffer)) != -1) {
 
-                int remaining =
-                        maxCharacters - output.length();
+                int remaining = maxCharacters - output.length();
 
-                if (remaining <= 0) {
+                if (bytesRead > remaining) {
+                    output.append(
+                            new String(
+                                    buffer,
+                                    0,
+                                    Math.max(remaining, 0),
+                                    StandardCharsets.UTF_8
+                            )
+                    );
+
                     process.destroyForcibly();
 
                     return output.toString();
                 }
-
-                int allowed =
-                        Math.min(bytesRead, remaining);
 
                 output.append(
                         new String(
                                 buffer,
                                 0,
-                                allowed,
+                                bytesRead,
                                 StandardCharsets.UTF_8
                         )
                 );
-
-                if (output.length() >= maxCharacters) {
-                    process.destroyForcibly();
-                    return output.toString();
-                }
             }
         }
 
