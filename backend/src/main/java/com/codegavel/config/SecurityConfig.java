@@ -32,43 +32,71 @@ public class SecurityConfig {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
+
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(List.of("http://localhost:5173"));
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedOrigins(
+                List.of("http://localhost:5173")
+        );
+
+        configuration.setAllowedMethods(
+                List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")
+        );
+
         configuration.setAllowedHeaders(List.of("*"));
+
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();
 
-        source.registerCorsConfiguration("/**", configuration);
+        source.registerCorsConfiguration(
+                "/**",
+                configuration
+        );
 
         return source;
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http)
-            throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http) throws Exception {
 
         http
                 .cors(cors -> {})
                 .csrf(AbstractHttpConfigurer::disable)
+
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/error").permitAll()
 
-                        // Problems can be viewed publicly.
-                        .requestMatchers(HttpMethod.GET, "/api/problems/**").permitAll()
+                        // Public authentication
+                        .requestMatchers("/api/auth/**")
+                        .permitAll()
 
-                        // Problem creation is disabled for public/API users.
-                        // We'll use the seed/import system later.
-                        .requestMatchers(HttpMethod.POST, "/api/problems/**").denyAll()
+                        // Spring error dispatch
+                        .requestMatchers("/error")
+                        .permitAll()
 
-                        // Submissions require authentication.
-                        .requestMatchers("/api/submissions/**").authenticated()
+                        // Public problem browsing
+                        .requestMatchers(HttpMethod.GET, "/api/problems/**")
+                        .permitAll()
 
-                        .anyRequest().authenticated()
+                        // Problem creation remains blocked
+            // Run visible examples without authentication
+            .requestMatchers(HttpMethod.POST, "/api/problems/*/run")
+            .permitAll()
+
+                        .requestMatchers(HttpMethod.POST, "/api/problems/**")
+                        .denyAll()
+
+                        // Submissions require JWT
+                        .requestMatchers("/api/submissions/**")
+                        .authenticated()
+
+                        // Everything else requires authentication
+                        .anyRequest()
+                        .authenticated()
                 )
+
                 .addFilterBefore(
                         jwtAuthenticationFilter,
                         UsernamePasswordAuthenticationFilter.class

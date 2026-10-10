@@ -45,6 +45,24 @@ export async function getProblem(id) {
   return response.json();
 }
 
+export async function runCode(problemId, sourceCode) {
+  const response = await fetch(`${API_URL}/problems/${problemId}/run`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      sourceCode,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Run failed");
+  }
+
+  return response.json();
+}
+
 export async function submitCode(problemId, sourceCode) {
   const token = localStorage.getItem("token");
 
@@ -61,7 +79,8 @@ export async function submitCode(problemId, sourceCode) {
   });
 
   if (!response.ok) {
-    throw new Error("Submission failed");
+    const message = await response.text();
+    throw new Error(message || `Submission failed (${response.status})`);
   }
 
   return response.json();
@@ -75,6 +94,13 @@ export async function getSubmission(id) {
       Authorization: `Bearer ${token}`,
     },
   });
+
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(
+      message || `Failed to fetch submission (${response.status})`
+    );
+  }
 
   return response.json();
 }

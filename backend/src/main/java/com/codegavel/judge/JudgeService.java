@@ -16,6 +16,7 @@ public class JudgeService {
     public JudgeResult judgeSubmission(Submission submission) {
 
         if (submission.getProblem().getTestCases().isEmpty()) {
+
             return new JudgeResult(
                     "SYSTEM_ERROR",
                     null,
@@ -25,19 +26,26 @@ public class JudgeService {
 
         long totalExecutionTime = 0;
 
-        for (TestCase testCase : submission.getProblem().getTestCases()) {
+        String problemSlug =
+                submission.getProblem().getSlug();
+
+        for (TestCase testCase :
+                submission.getProblem().getTestCases()) {
 
             JudgeResult result = javaJudge.judge(
                     submission.getSourceCode(),
                     testCase.getInputData(),
-                    testCase.getExpectedOutput()
+                    testCase.getExpectedOutput(),
+                    problemSlug
             );
 
             if (result.getExecutionTimeMs() != null) {
-                totalExecutionTime += result.getExecutionTimeMs();
+                totalExecutionTime +=
+                        result.getExecutionTimeMs();
             }
 
             if (!result.getStatus().equals("ACCEPTED")) {
+
                 return new JudgeResult(
                         result.getStatus(),
                         totalExecutionTime,

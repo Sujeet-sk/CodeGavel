@@ -19,19 +19,71 @@ public class JavaJudge {
     public JudgeResult judge(
             String sourceCode,
             String input,
-            String expectedOutput) {
+            String expectedOutput,
+            String problemSlug) {
+
+        if ("robbery-planner".equals(problemSlug)) {
+            return judgeSolution(
+                    sourceCode,
+                    input,
+                    expectedOutput,
+                    robberyDriver()
+            );
+        }
+
+        return judgeLegacy(
+                sourceCode,
+                input,
+                expectedOutput
+        );
+    }
+
+    public JudgeResult runExample(
+            String sourceCode,
+            String input,
+            String expectedOutput,
+            String problemSlug) {
+
+        if ("robbery-planner".equals(problemSlug)) {
+            return judgeSolution(
+                    sourceCode,
+                    input,
+                    expectedOutput,
+                    robberyDriver()
+            );
+        }
+
+        return judgeLegacy(
+                sourceCode,
+                input,
+                expectedOutput
+        );
+    }
+
+    private JudgeResult judgeSolution(
+            String sourceCode,
+            String input,
+            String expectedOutput,
+            String driver) {
 
         Path tempDir = null;
 
         try {
             tempDir = Files.createTempDirectory("codegavel-");
 
-            Path sourceFile = tempDir.resolve("Main.java");
+            Path solutionFile = tempDir.resolve("Solution.java");
+            Path mainFile = tempDir.resolve("Main.java");
             Path inputFile = tempDir.resolve("input.txt");
 
             Files.writeString(
-                    sourceFile,
+                    solutionFile,
                     sourceCode,
+                    StandardCharsets.UTF_8
+            );
+
+            Files.writeString(
+                    mainFile,
+                    driver,
                     StandardCharsets.UTF_8
             );
 
@@ -41,11 +93,8 @@ public class JavaJudge {
                     StandardCharsets.UTF_8
             );
 
-            String volume = tempDir.toAbsolutePath() + ":/sandbox";
-
-            // -------------------------
-            // COMPILE
-            // -------------------------
+            String volume =
+                    tempDir.toAbsolutePath() + ":/sandbox";
 
             Process compileProcess = new ProcessBuilder(
                     "docker", "run", "--rm",
@@ -58,7 +107,9 @@ public class JavaJudge {
                     "--tmpfs", "/tmp",
                     "-v", volume,
                     "codegavel-java:21",
-                    "javac", "/sandbox/Main.java"
+                    "javac",
+                    "/sandbox/Solution.java",
+                    "/sandbox/Main.java"
             )
                     .redirectErrorStream(true)
                     .start();
@@ -94,7 +145,6 @@ public class JavaJudge {
             }
 
             int compileExitCode = compileProcess.waitFor();
-
             compileExecutor.shutdown();
 
             if (compileExitCode != 0) {
@@ -104,10 +154,6 @@ public class JavaJudge {
                         compileOutput
                 );
             }
-
-            // -------------------------
-            // RUN
-            // -------------------------
 
             Process runProcess = new ProcessBuilder(
                     "docker", "run", "--rm",
@@ -156,16 +202,6 @@ public class JavaJudge {
                         "TIME_LIMIT_EXCEEDED",
                         RUN_TIMEOUT_SECONDS * 1000,
                         "Time limit exceeded"
-                );
-            } catch (ExecutionException e) {
-
-                runProcess.destroyForcibly();
-                runExecutor.shutdownNow();
-
-                return new JudgeResult(
-                        "SYSTEM_ERROR",
-                        null,
-                        "Judge execution failed"
                 );
             }
 
@@ -241,27 +277,83 @@ public class JavaJudge {
         }
     }
 
+    private JudgeResult judgeLegacy(
+            String sourceCode,
+            String input,
+            String expectedOutput) {
+
+        return judgeSolution(
+                sourceCode,
+                input,
+                expectedOutput,
+                legacyDriver()
+        );
+    }
+
+    private String robberyDriver() {
+        return """
+                import java.util.*;
+
+                public class Main {
+                    public static void main(String[] args) {
+                        Scanner sc = new Scanner(System.in);
+
+                        int n = sc.nextInt();
+                        int[] nums = new int[n];
+
+                        for (int i = 0; i < n; i++) {
+                            nums[i] = sc.nextInt();
+                        }
+
+                        Solution solution = new Solution();
+
+                        int result = solution.rob(nums);
+
+                        System.out.println(result);
+                    }
+                }
+                """;
+    }
+
+    private String legacyDriver() {
+        return """
+                public class Main {
+                    public static void main(String[] args) {
+                    }
+                }
+                """;
+    }
+
     private String readLimited(
             Process process,
             int maxCharacters) throws IOException {
 
         byte[] buffer = new byte[4096];
-        StringBuilder output = new StringBuilder();
 
-        try (var stream = process.getInputStream()) {
+        StringBuilder output =
+                new StringBuilder();
+
+        try (var stream =
+                     process.getInputStream()) {
 
             int bytesRead;
 
-            while ((bytesRead = stream.read(buffer)) != -1) {
+            while ((bytesRead =
+                    stream.read(buffer)) != -1) {
 
-                int remaining = maxCharacters - output.length();
+                int remaining =
+                        maxCharacters - output.length();
 
                 if (bytesRead > remaining) {
+
                     output.append(
                             new String(
                                     buffer,
                                     0,
-                                    Math.max(remaining, 0),
+                                    Math.max(
+                                            remaining,
+                                            0
+                                    ),
                                     StandardCharsets.UTF_8
                             )
                     );
